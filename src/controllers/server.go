@@ -2,14 +2,19 @@ package main
 
 import (
 	"net/http"
+
+	"rpgtemplate/src/controllers/config"
+	"rpgtemplate/src/controllers/rpg"
 )
 
 var httpRouter Router = NewMuxRouter()
 
 func main() {
+	config.LoadEnv()
+	config.ConnectToDb()
 	// RPG Routes
-	// rpgCaller := rpg.rpgCaller{Hasura: &rpg.HasuraClient{}}
-	// httpRouter.POST(rpg.InsertRpgPath, rpgCaller.InsertRpgAction)
+	httpRouter.POST(rpg.CreateRPGUrl, rpg.CreateRPG)
+	httpRouter.GET(rpg.GetRPGUrl, rpg.GetRPG)
 	// Static Files
 	muxDispatcher.PathPrefix("/").Handler(http.FileServer(http.Dir("./dist/")))
 	// Start Server
