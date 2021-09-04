@@ -5,5 +5,5 @@ type createFormData struct {
 }
 
 type responseError struct {
-	Message string `json:"message"`
+	Error string `json:"message"`
 }

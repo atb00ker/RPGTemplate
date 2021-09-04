@@ -14,6 +14,8 @@ func main() {
 	config.ConnectToDb()
 	// RPG Routes
 	httpRouter.POST(rpg.CreateRPGUrl, rpg.CreateRPG)
+	httpRouter.PUT(rpg.DetailsRPGUrl, rpg.UpdateRPG)
+	httpRouter.DELETE(rpg.DetailsRPGUrl, rpg.DeleteRPG)
 	httpRouter.GET(rpg.GetRPGUrl, rpg.GetRPG)
 	// Static Files
 	muxDispatcher.PathPrefix("/").Handler(http.FileServer(http.Dir("./dist/")))

@@ -33,6 +33,7 @@ typings/
 *.tgz
 .cache
 dist
+__debug_bin
 
 # eslint
 .eslintcache
